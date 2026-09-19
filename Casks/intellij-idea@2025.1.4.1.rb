@@ -32,9 +32,9 @@ cask "intellij-idea@2025.1.4.1" do
   binary shimscript, target: "idea"
 
   preflight_steps do
-    File.write shimscript, <<~EOS
+    write_file shimscript, <<~EOS
       #!/bin/sh
-      exec '#{staged_path}/IntelliJ IDEA.app/Contents/MacOS/idea' "$@"
+      exec '{{appdir}}/IntelliJ IDEA.app/Contents/MacOS/idea' "$@"
     EOS
   end
 
